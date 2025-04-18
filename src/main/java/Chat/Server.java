@@ -7,7 +7,7 @@ import java.net.Socket;
 /**
  * listen to connection requests, those are comming from players, and respond
  * */
-public class Server {
+public class Server{
     ServerSocket serverSocket;
 
     public Server(ServerSocket serverSocket) {
@@ -18,16 +18,12 @@ public class Server {
         try{
             while(!serverSocket.isClosed()){
                 Socket socket = serverSocket.accept();
+                PlayerHandler playerHandler = new PlayerHandler(socket);
+                Thread thread = new Thread(playerHandler);
+                thread.start();
             }
-
-            PlayerHandler playerHandler = new PlayerHandler(socket);
-            Thread thread = new Thread(playerHandler);
-            thread.start();
-
         } catch (IOException e) {
             closeServerSocket();
-            // handle exception
-            // throw new RuntimeException(e);
         }
     }
     public void closeServerSocket(){
@@ -40,9 +36,11 @@ public class Server {
         }
     }
 
-    public static  void main(String[] args) throws IOException{
-        ServerSocket serverSocket = new ServerSocket(1234);
+    public static void main(String[] args) throws IOException{
+        ServerSocket serverSocket = new ServerSocket(9090);
         Server server = new Server(serverSocket);
         server.startServer();
     }
+
+
 }
