@@ -97,8 +97,10 @@ public class Player {
 
     public static void main(String[] args) throws IOException{
         Scanner scanner = new Scanner(System.in);
-        System.out.println("The converstion will start once the receiver player enter the chat... ");
-        System.out.println("Enter the your name  : ");
+        System.out.println("The following is a Chat program. ");
+        System.out.println("The converstion will start when both (Initiator and Receiver) players enter the chat. ");
+        System.out.println("The player who is going to enter his/her name first will be the Initiator");
+        System.out.print("Enter your name  : ");
         String playerName = scanner.nextLine();
 
         Socket socket = new Socket("localhost",9090 );

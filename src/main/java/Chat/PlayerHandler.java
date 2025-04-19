@@ -28,6 +28,7 @@ public class PlayerHandler implements Runnable{
             //PlayerHandler initiator = playerHandlers.get(0);
             //PlayerHandler receiver = playerHandlers.get(1);
             notifyInitiator("The receiver Player: " + playerName+ " is online...");
+
         } catch (IOException e) {
             closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
         }
