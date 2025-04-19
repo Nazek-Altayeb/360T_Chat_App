@@ -31,7 +31,7 @@ public class Player {
     /**
      * send a message a long with the Player name.
      * */
-    public void sendMessage(){
+    public void writeMessage(){
         try{
             bufferedWriter.write(playerName);
             bufferedWriter.newLine();
@@ -43,7 +43,7 @@ public class Player {
                 bufferedWriter.write(playerName + ": " + message);
                 bufferedWriter.newLine();
                 bufferedWriter.flush();
-                handelReceivedMessage();
+                receiveMessage();
             }
 
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class Player {
     /**
      * Create a new thread for received messages
      * */
-    public void handelReceivedMessage(){
+    public void receiveMessage(){
         new Thread(
                 new Runnable() {
                     @Override
@@ -74,6 +74,7 @@ public class Player {
         ).start();
 
     }
+
 
     /**
      * Handle the IO Exception, by closing the Buffers and the socket.
@@ -97,11 +98,15 @@ public class Player {
 
     public static void main(String[] args) throws IOException{
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the Player name  : ");
+        System.out.println("The converstion will start once the receiver player enter the chat... ");
+        System.out.println("Enter the your name  : ");
         String playerName = scanner.nextLine();
+
         Socket socket = new Socket("localhost",9090 );
         Player player = new Player(socket, playerName);
-        player.sendMessage();
-        player.handelReceivedMessage();
+
+        player.receiveMessage();
+        player.writeMessage();
+
     }
 }

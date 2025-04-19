@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="create Server class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" afterDir="false" />
+    <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add player and handlePlayer classes">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/ConnectionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +49,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Player.executor": "Debug",
-    "Application.Server.executor": "Debug",
+    "Application.Main.executor": "Debug",
+    "Application.Player.executor": "Run",
+    "Application.Server.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
@@ -61,6 +61,19 @@
   }
 }]]></component>
   <component name="RunManager" selected="Application.Player">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chat.Main" />
+      <module name="360T_Chat_App" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Chat.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Player" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Chat.Player" />
       <module name="360T_Chat_App" />
@@ -88,6 +101,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Player" />
       <item itemvalue="Application.Server" />
     </list>
@@ -95,6 +109,7 @@
       <list>
         <item itemvalue="Application.Player" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -122,40 +137,16 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create Server class" />
-    <option name="LAST_COMMIT_MESSAGE" value="create Server class" />
+    <MESSAGE value="add player and handlePlayer classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add player and handlePlayer classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/Player.java</url>
-          <line>97</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/Player.java</url>
-          <line>99</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/Player.java</url>
-          <line>102</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/Player.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>36</line>
+          <line>50</line>
           <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>39</line>
-          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/Server.java</url>
@@ -168,19 +159,24 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="19" />
+          <url>file://$PROJECT_DIR$/src/main/java/Chat/ConnectionHandler.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Chat/ConnectionHandler.java</url>
+          <line>150</line>
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="21" />
+          <line>26</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>74</line>
-          <option name="timeStamp" value="22" />
+          <line>119</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
