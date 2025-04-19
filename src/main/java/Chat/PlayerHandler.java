@@ -27,7 +27,7 @@ public class PlayerHandler implements Runnable{
             playerHandlers.add(this);
             //PlayerHandler initiator = playerHandlers.get(0);
             //PlayerHandler receiver = playerHandlers.get(1);
-            notify("The receiver Player: " + playerName+ " is online...");
+            notifyInitiator("The receiver Player: " + playerName+ " is online...");
         } catch (IOException e) {
             closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
         }
@@ -47,7 +47,7 @@ public class PlayerHandler implements Runnable{
         }
     }
 
-    public void notify(String message){
+    public void notifyInitiator(String message){
         for(PlayerHandler playerHandler : playerHandlers)
             try{
                 if(!playerHandler.playerName.equals(playerName)){
@@ -61,8 +61,6 @@ public class PlayerHandler implements Runnable{
     }
 
     public void sendReply(String message){
-        // add counter and count till 10, then display a notification and call stopChat method.
-
         if(numberOfSentMessages <= 10){
             try{
                 if(this.playerName.equals(playerHandlers.getFirst().playerName)){
@@ -74,17 +72,19 @@ public class PlayerHandler implements Runnable{
             } catch (IOException e) {
                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
             }
+        }else{
+            endChatNotification("Initiator has sent 10 messages. Chat is terminated...");
+            endChat();
         }
-
     }
 
-    public void stopChat(){
+    public void endChat(){
         playerHandlers.remove(this);
         closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
     }
 
     public void closeSocketAndBuffers(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){
-        stopChat();
+        endChat();
         try{
             if(socket != null){
                 socket.close();
@@ -99,6 +99,18 @@ public class PlayerHandler implements Runnable{
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void endChatNotification(String message){
+        for(PlayerHandler playerHandler : playerHandlers)
+            try{
+                    playerHandler.bufferedWriter.write(message);
+                    playerHandler.bufferedWriter.newLine();
+                    playerHandler.bufferedWriter.flush();
+
+            } catch (IOException e) {
+                closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
+            }
     }
 
     @Override

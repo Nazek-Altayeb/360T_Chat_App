@@ -157,7 +157,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>109</line>
+          <line>121</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
