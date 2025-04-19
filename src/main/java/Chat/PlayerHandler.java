@@ -73,14 +73,13 @@ public class PlayerHandler implements Runnable{
                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
             }
         }else{
-            endChatNotification("Initiator has sent 10 messages. Chat is terminated...");
-            endChat();
+                closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
         }
     }
 
     public void endChat(){
         playerHandlers.remove(this);
-        closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
+        endChatNotification("Initiator has sent 10 messages. Chat is terminated...");
     }
 
     public void closeSocketAndBuffers(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){
