@@ -14,6 +14,7 @@ public class PlayerHandler implements Runnable{
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     private String playerName;
+    private int numberOfSentMessages=1;
 
     public PlayerHandler(Socket socket){
         try {
@@ -61,16 +62,20 @@ public class PlayerHandler implements Runnable{
 
     public void sendReply(String message){
         // add counter and count till 10, then display a notification and call stopChat method.
-        try{
-            if(this.playerName.equals(playerHandlers.getFirst().playerName)){
-                playerHandlers.getFirst().bufferedWriter.write(message);
-                playerHandlers.getFirst().bufferedWriter.newLine();
-                playerHandlers.getFirst().bufferedWriter.flush();
-            }
 
-        } catch (IOException e) {
-            closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
+        if(numberOfSentMessages <= 10){
+            try{
+                if(this.playerName.equals(playerHandlers.getFirst().playerName)){
+                    playerHandlers.getFirst().bufferedWriter.write(message+" counter: "+numberOfSentMessages);
+                    playerHandlers.getFirst().bufferedWriter.newLine();
+                    playerHandlers.getFirst().bufferedWriter.flush();
+                }
+
+            } catch (IOException e) {
+                closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
+            }
         }
+
     }
 
     public void stopChat(){
@@ -104,6 +109,7 @@ public class PlayerHandler implements Runnable{
                 message = bufferedReader.readLine();
                 sendMessage(message);
                 sendReply(message);
+                numberOfSentMessages++;
             } catch (IOException e) {
                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
                 break;
