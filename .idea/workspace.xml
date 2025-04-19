@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add player and handlePlayer classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/ConnectionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Chat/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" afterDir="false" />
@@ -145,7 +143,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>50</line>
+          <line>36</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -159,23 +157,8 @@
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/ConnectionHandler.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/ConnectionHandler.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java</url>
-          <line>119</line>
+          <line>104</line>
           <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>

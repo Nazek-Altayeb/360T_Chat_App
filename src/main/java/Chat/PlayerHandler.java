@@ -18,28 +18,14 @@ public class PlayerHandler implements Runnable{
     public PlayerHandler(Socket socket){
         try {
             this.socket = socket;
-
             OutputStreamWriter outputStreamWriter= new OutputStreamWriter(socket.getOutputStream());
             this.bufferedWriter = new BufferedWriter(outputStreamWriter);
             InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
             this.bufferedReader = new BufferedReader(inputStreamReader);
             this.playerName = bufferedReader.readLine();
-            //sendMessage("The Player: " + playerName+ " is online...");
-            //sendPlayerName("The Player: " + playerName+ " is online...");
             playerHandlers.add(this);
             //PlayerHandler initiator = playerHandlers.get(0);
             //PlayerHandler receiver = playerHandlers.get(1);
-
-            /**if(receiver.playerName != null){
-
-                sendMessage("The receiver player: " + receiver.playerName+ " is online...");
-            }
-
-            if(initiator.playerName != null){
-
-                sendMessage("The initiator player: " + initiator.playerName+ " is online...");
-            }*/
-
             notify("The receiver Player: " + playerName+ " is online...");
         } catch (IOException e) {
             closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
@@ -74,7 +60,7 @@ public class PlayerHandler implements Runnable{
     }
 
     public void sendReply(String message){
-
+        // add counter and count till 10, then display a notification and call stopChat method.
         try{
             if(this.playerName.equals(playerHandlers.getFirst().playerName)){
                 playerHandlers.getFirst().bufferedWriter.write(message);
@@ -90,7 +76,6 @@ public class PlayerHandler implements Runnable{
     public void stopChat(){
         playerHandlers.remove(this);
         closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
-        // sendMessage("The initiator sent 10 messages and got 10 replies, Chat is ended...");
     }
 
     public void closeSocketAndBuffers(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){

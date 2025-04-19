@@ -29,7 +29,7 @@ public class Player {
     }
 
     /**
-     * send a message a long with the Player name.
+     * write a message a long side  with the Player name.
      * */
     public void writeMessage(){
         try{
@@ -59,11 +59,11 @@ public class Player {
                 new Runnable() {
                     @Override
                     public void run() {
-                        String messageFromInitiator;
+                        String message;
                         while (socket.isConnected()){
                             try{
-                                messageFromInitiator = bufferedReader.readLine();
-                                System.out.println(messageFromInitiator);
+                                message = bufferedReader.readLine();
+                                System.out.println(message);
                             }catch(IOException e){
                                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
                             }
@@ -74,7 +74,6 @@ public class Player {
         ).start();
 
     }
-
 
     /**
      * Handle the IO Exception, by closing the Buffers and the socket.
