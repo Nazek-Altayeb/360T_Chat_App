@@ -63,7 +63,9 @@ public class Player {
                         while (socket.isConnected()){
                             try{
                                 message = bufferedReader.readLine();
-                                System.out.println(message);
+                                if(message != null){
+                                    System.out.println(message);
+                                }
                             }catch(IOException e){
                                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
                             }

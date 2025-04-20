@@ -21,6 +21,7 @@ public class Server{
                 PlayerHandler playerHandler = new PlayerHandler(socket);
                 Thread thread = new Thread(playerHandler);
                 thread.start();
+                System.out.println("New Player is connected : " + playerHandler.playerName);
             }
         } catch (IOException e) {
             closeServerSocket();
@@ -38,9 +39,12 @@ public class Server{
 
     public static void main(String[] args) throws IOException{
         ServerSocket serverSocket = new ServerSocket(9090);
+        System.out.println("Server started on port: "+ 9090);
         Server server = new Server(serverSocket);
         server.startServer();
     }
+
+
 
 
 }

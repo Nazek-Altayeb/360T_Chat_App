@@ -13,7 +13,7 @@ public class PlayerHandler implements Runnable{
     private Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
-    private String playerName;
+    public String playerName;
     private int numberOfSentMessages=1;
 
     public PlayerHandler(Socket socket){
@@ -25,8 +25,6 @@ public class PlayerHandler implements Runnable{
             this.bufferedReader = new BufferedReader(inputStreamReader);
             this.playerName = bufferedReader.readLine();
             playerHandlers.add(this);
-            //PlayerHandler initiator = playerHandlers.get(0);
-            //PlayerHandler receiver = playerHandlers.get(1);
             notifyInitiator("The receiver Player: " + playerName+ " is online...");
 
         } catch (IOException e) {
@@ -37,15 +35,15 @@ public class PlayerHandler implements Runnable{
 
     public void sendMessage(String message){
         for(PlayerHandler playerHandler : playerHandlers)
-        try{
-            if(!playerHandler.playerName.equals(playerName)){
-                playerHandler.bufferedWriter.write(message);
-                playerHandler.bufferedWriter.newLine();
-                playerHandler.bufferedWriter.flush();
+            try{
+                if(!playerHandler.playerName.equals(playerName)){
+                    playerHandler.bufferedWriter.write(message);
+                    playerHandler.bufferedWriter.newLine();
+                    playerHandler.bufferedWriter.flush();
+                }
+            } catch (IOException e) {
+                closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
             }
-        } catch (IOException e) {
-            closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
-        }
     }
 
     public void notifyInitiator(String message){
@@ -104,9 +102,9 @@ public class PlayerHandler implements Runnable{
     public void endChatNotification(String message){
         for(PlayerHandler playerHandler : playerHandlers)
             try{
-                    playerHandler.bufferedWriter.write(message);
-                    playerHandler.bufferedWriter.newLine();
-                    playerHandler.bufferedWriter.flush();
+                playerHandler.bufferedWriter.write(message);
+                playerHandler.bufferedWriter.newLine();
+                playerHandler.bufferedWriter.flush();
 
             } catch (IOException e) {
                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
