@@ -10,14 +10,18 @@ import java.util.ArrayList;
 public class PlayerHandler implements Runnable{
 
     public static ArrayList<PlayerHandler> playerHandlers= new ArrayList<>();
+
     private Socket socket;
     private BufferedReader bufferedReader;
     private BufferedWriter bufferedWriter;
     public String playerName;
     private int numberOfSentMessages=1;
+    private long pid;
 
     public PlayerHandler(Socket socket){
         try {
+            pid = ProcessHandle.current().pid();
+            System.out.println("The process ID for the created instance of a player is : "+ pid);
             this.socket = socket;
             OutputStreamWriter outputStreamWriter= new OutputStreamWriter(socket.getOutputStream());
             this.bufferedWriter = new BufferedWriter(outputStreamWriter);

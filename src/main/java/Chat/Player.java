@@ -1,8 +1,10 @@
 package Chat;
 
 import java.io.*;
+import java.lang.management.ManagementFactory;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Player {
 
@@ -98,18 +100,22 @@ public class Player {
     }
 
     public static void main(String[] args) throws IOException{
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("The following is a Chat program. ");
-        System.out.println("The converstion will start when both (Initiator and Receiver) players enter the chat. ");
-        System.out.println("The player who is going to enter his/her name first will be the Initiator");
-        System.out.print("Enter your name  : ");
-        String playerName = scanner.nextLine();
 
-        Socket socket = new Socket("localhost",9090 );
-        Player player = new Player(socket, playerName);
+        /*PID*/
+        String jvmName = ManagementFactory.getRuntimeMXBean().getName();
+        String processID= jvmName.split("@")[0];
+        System.out.println("PID is : "+ processID);
 
-        player.receiveMessage();
-        player.writeMessage();
+         Scanner scanner = new Scanner(System.in);
+         System.out.println("The following is a Chat program. ");
+         System.out.println("The converstion will start when both (Initiator and Receiver) players enter the chat. ");
+         System.out.println("The player who is going to enter his/her name first will be the Initiator");
+         System.out.print("Enter your name  : ");
+         String playerName = scanner.nextLine();
+         Socket socket = new Socket("localhost",9090 );
+         Player player = new Player(socket, playerName);
+         player.receiveMessage();
+         player.writeMessage();
 
     }
 }
