@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add player and handlePlayer classes">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/run.sh" afterDir="false" />
+    <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add script shell">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/run.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Program Files/Git/bin/sh.exe",
     "onboarding.tips.debug.path": "C:/Users/nalma/IdeaProjects/360T_Chat_App/src/main/java/org/example/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -147,8 +147,18 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="3c3499e6-14f0-437e-88f8-ff09c65c62d6" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
+        <entry key="3c3499e6-14f0-437e-88f8-ff09c65c62d6">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -160,7 +170,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="create Server class" />
     <MESSAGE value="add player and handlePlayer classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="add player and handlePlayer classes" />
+    <MESSAGE value="add script shell" />
+    <option name="LAST_COMMIT_MESSAGE" value="add script shell" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
