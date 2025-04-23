@@ -20,12 +20,6 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.indoorvivants.gnome/gobject -->
-        <dependency>
-            <groupId>com.indoorvivants.gnome</groupId>
-            <artifactId>gobject_native0.5_3</artifactId>
-            <version>0.1.0</version>
-        </dependency>
     </dependencies>
 
 </project>
