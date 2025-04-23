@@ -99,12 +99,6 @@ public class Player {
     }
 
     public static void main(String[] args) throws IOException{
-
-        /*PID*/
-        String jvmName = ManagementFactory.getRuntimeMXBean().getName();
-        String processID= jvmName.split("@")[0];
-        System.out.println("PID is : "+ processID);
-
          Scanner scanner = new Scanner(System.in);
          System.out.println("The following is a Chat program. ");
          System.out.println("The converstion will start when both (Initiator and Receiver) players enter the chat. ");

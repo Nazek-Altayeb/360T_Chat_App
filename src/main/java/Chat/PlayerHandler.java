@@ -21,7 +21,7 @@ public class PlayerHandler implements Runnable{
     public PlayerHandler(Socket socket){
         try {
             pid = ProcessHandle.current().pid();
-            System.out.println("The process ID for the created instance of a player is : "+ pid);
+            System.out.println("The process ID for the created instance of the Class Player is : "+ pid);
             this.socket = socket;
             OutputStreamWriter outputStreamWriter= new OutputStreamWriter(socket.getOutputStream());
             this.bufferedWriter = new BufferedWriter(outputStreamWriter);
@@ -29,7 +29,8 @@ public class PlayerHandler implements Runnable{
             this.bufferedReader = new BufferedReader(inputStreamReader);
             this.playerName = bufferedReader.readLine();
             playerHandlers.add(this);
-            notifyInitiator("The receiver Player: " + playerName+ " is online...");
+            sendNotification("The Player: " + playerName+ " is online...", playerName);
+            sendNotification("The Player: " + playerHandlers.getFirst().playerName+ " is online...", playerHandlers.getFirst().playerName);
 
         } catch (IOException e) {
             closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
@@ -38,19 +39,22 @@ public class PlayerHandler implements Runnable{
     }
 
     public void sendMessage(String message){
-        for(PlayerHandler playerHandler : playerHandlers)
-            try{
-                if(!playerHandler.playerName.equals(playerName)){
-                    playerHandler.bufferedWriter.write(message);
-                    playerHandler.bufferedWriter.newLine();
-                    playerHandler.bufferedWriter.flush();
+        if(numberOfSentMessages <= 10){
+            for(PlayerHandler playerHandler : playerHandlers)
+                try{
+                    if(!playerHandler.playerName.equals(playerName)){
+                        playerHandler.bufferedWriter.write(message);
+                        playerHandler.bufferedWriter.newLine();
+                        playerHandler.bufferedWriter.flush();
+                    }
+                } catch (IOException e) {
+                    closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
                 }
-            } catch (IOException e) {
-                closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
-            }
+        }
+
     }
 
-    public void notifyInitiator(String message){
+    public void sendNotification(String message, String playerName){
         for(PlayerHandler playerHandler : playerHandlers)
             try{
                 if(!playerHandler.playerName.equals(playerName)){
