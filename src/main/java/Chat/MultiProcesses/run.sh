@@ -4,7 +4,7 @@
 #javac ${Current_DIR}/*.java
 
 #compile
-# javac *.java
+javac *.java
 
 # start server
 wt.exe bash -c "java -classpath . Server.java"

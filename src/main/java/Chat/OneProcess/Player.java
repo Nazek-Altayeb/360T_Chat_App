@@ -1,7 +1,6 @@
-package Chat;
+package Chat.TwoProcessIDs;
 
 import java.io.*;
-import java.lang.management.ManagementFactory;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -96,6 +95,11 @@ public class Player {
         }catch(IOException e){
             e.printStackTrace();
         }
+    }
+
+    private static String getProcessID() {
+        String processName = java.lang.management.ManagementFactory.getRuntimeMXBean().getName();
+        return processName.split("@")[0];
     }
 
     public static void main(String[] args) throws IOException{

@@ -1,4 +1,4 @@
-package Chat;
+package Chat.TwoProcessIDs;
 
 import java.io.*;
 import java.net.Socket;
@@ -16,21 +16,21 @@ public class PlayerHandler implements Runnable{
     private BufferedWriter bufferedWriter;
     public String playerName;
     private int numberOfSentMessages=1;
-    private long pid;
+    public Long processID;
+
 
     public PlayerHandler(Socket socket){
         try {
-            pid = ProcessHandle.current().pid();
-            System.out.println("The process ID for the created instance of the Class Player is : "+ pid);
             this.socket = socket;
             OutputStreamWriter outputStreamWriter= new OutputStreamWriter(socket.getOutputStream());
             this.bufferedWriter = new BufferedWriter(outputStreamWriter);
             InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
             this.bufferedReader = new BufferedReader(inputStreamReader);
             this.playerName = bufferedReader.readLine();
+            this.processID = ProcessHandle.current().pid();
             playerHandlers.add(this);
             sendNotification("The Player: " + playerName+ " is online...", playerName);
-            sendNotification("The Player: " + playerHandlers.getFirst().playerName+ " is online...", playerHandlers.getFirst().playerName);
+            sendNotification("The Player: " + playerHandlers.getFirst().playerName+ " is online..." , playerHandlers.getFirst().playerName);
 
         } catch (IOException e) {
             closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
@@ -80,7 +80,7 @@ public class PlayerHandler implements Runnable{
                 closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
             }
         }else{
-            playerHandlers.getFirst().bufferedWriter.write(" You have sent 10 messages and received 10 replies, Chat is terminated ... ");
+            playerHandlers.getFirst().bufferedWriter.write(" You sent 10 messages and received 10 replies, Chat is terminated ... ");
             playerHandlers.getFirst().bufferedWriter.newLine();
             playerHandlers.getFirst().bufferedWriter.flush();
             endChat();
@@ -89,7 +89,7 @@ public class PlayerHandler implements Runnable{
 
     public void endChat(){
         closeSocketAndBuffers(socket, bufferedReader, bufferedWriter);
-        sendNotification("The Initiator has sent 10 messages and received 10 replies. Chat is terminated...", playerName);
+        sendNotification("The Initiator sent 10 messages. Chat is terminated...", playerName);
     }
 
     public void closeSocketAndBuffers(Socket socket, BufferedReader bufferedReader, BufferedWriter bufferedWriter){
@@ -110,7 +110,7 @@ public class PlayerHandler implements Runnable{
         }
     }
 
-    @Override
+ //   @Override
     public void run() {
         String message;
         while(socket.isConnected()){
@@ -125,4 +125,8 @@ public class PlayerHandler implements Runnable{
             }
         }
     }
+
+
+
+
 }
