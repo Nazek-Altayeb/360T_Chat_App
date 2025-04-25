@@ -1,4 +1,4 @@
-package Chat.TwoProcessIDs;
+package Chat.MultiProcessIDs;
 
 import java.io.*;
 import java.net.Socket;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Handle instances of  Players
  * */
-public class PlayerHandler implements Runnable{
+public class PlayerHandler extends Thread{
 
     public static ArrayList<PlayerHandler> playerHandlers= new ArrayList<>();
 
@@ -110,7 +110,7 @@ public class PlayerHandler implements Runnable{
         }
     }
 
- //   @Override
+    @Override
     public void run() {
         String message;
         while(socket.isConnected()){

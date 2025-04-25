@@ -5,8 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add script shell">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/PlayerHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/PlayerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses/PlayerHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/run.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/OneProcess/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/OneProcess/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/PlayerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/OneProcess/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/OneProcess/run.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,40 +54,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Player.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Shell Script.run.sh.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Program Files/Git/bin/bash.exe&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/nalma/IdeaProjects/360T_Chat_App/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Chat.MultiProcessIDs.Player.executor": "Run",
+    "Application.Chat.MultiProcessIDs.Server.executor": "Run",
+    "Application.Chat.OneProcess.Player.executor": "Run",
+    "Application.Chat.OneProcess.Server.executor": "Run",
+    "Application.Chat.SingleProcessID.Player.executor": "Debug",
+    "Application.Main.executor": "Run",
+    "Application.Player.executor": "Run",
+    "Application.Server.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Shell Script.run.sh.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Program Files/Git/bin/bash.exe",
+    "onboarding.tips.debug.path": "C:/Users/nalma/IdeaProjects/360T_Chat_App/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat" />
+      <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat\MultiProcessIDs" />
+      <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat\MultiProcesses" />
+      <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat\OneProcess" />
+      <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat\OneProcessID" />
+      <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat\TwoProcessIDs" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.run.sh">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chat.Main" />
+  <component name="RunManager" selected="Application.Chat.SingleProcessID.Player">
+    <configuration name="Chat.SingleProcessID.Player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chat.SingleProcessID.Player" />
       <module name="360T_Chat_App" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Chat.*" />
+          <option name="PATTERN" value="Chat.SingleProcessID.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -85,12 +104,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Player" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chat.Player" />
+    <configuration name="Player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chat.MultiProcessIDs.Player" />
       <module name="360T_Chat_App" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Chat.*" />
+          <option name="PATTERN" value="Chat.MultiProcessIDs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,11 +118,11 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chat.Server" />
+      <option name="MAIN_CLASS_NAME" value="Chat.MultiProcessIDs.Server" />
       <module name="360T_Chat_App" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Chat.*" />
+          <option name="PATTERN" value="Chat.MultiProcessIDs.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -111,30 +130,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="run.sh" type="ShConfigurationType" temporary="true">
+    <configuration name="run.sh (1)" type="ShConfigurationType" temporary="true">
       <option name="SCRIPT_TEXT" value="" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/src/main/java/Chat/run.sh" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses/run.sh" />
       <option name="SCRIPT_OPTIONS" value="" />
       <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/src/main/java/Chat" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="false" />
-      <option name="INTERPRETER_PATH" value="$PROJECT_DIR$/../../../../Program Files/Git/bin/bash.exe" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="EXECUTE_IN_TERMINAL" value="true" />
       <option name="EXECUTE_SCRIPT_FILE" value="true" />
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="run.sh" type="ShConfigurationType" temporary="true">
+    <configuration name="run.sh (2)" type="ShConfigurationType" temporary="true">
       <option name="SCRIPT_TEXT" value="" />
       <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
-      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/src/main/java/Chat/run.sh" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses/run.sh" />
       <option name="SCRIPT_OPTIONS" value="" />
       <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
-      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/.idea/scripts" />
-      <option name="INDEPENDENT_INTERPRETER_PATH" value="false" />
-      <option name="INTERPRETER_PATH" value="$PROJECT_DIR$/../../../../Program Files/Git/bin/sh.exe" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/src/main/java/Chat/MultiProcesses" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="EXECUTE_IN_TERMINAL" value="true" />
       <option name="EXECUTE_SCRIPT_FILE" value="true" />
@@ -142,18 +161,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Player" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Shell Script.run.sh" />
+      <item itemvalue="Application.Chat.SingleProcessID.Player" />
+      <item itemvalue="Application.Chat.OneProcess.Player" />
+      <item itemvalue="Application.Chat.OneProcess.Server" />
+      <item itemvalue="Shell Script.run.sh (2)" />
+      <item itemvalue="Shell Script.run.sh (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Shell Script.run.sh" />
-        <item itemvalue="Shell Script.run.sh" />
-        <item itemvalue="Application.Server" />
-        <item itemvalue="Application.Player" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Chat.SingleProcessID.Player" />
+        <item itemvalue="Application.Chat.OneProcess.Player" />
+        <item itemvalue="Application.Chat.OneProcess.Server" />
+        <item itemvalue="Shell Script.run.sh (2)" />
+        <item itemvalue="Shell Script.run.sh (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -194,5 +214,35 @@
     <MESSAGE value="add player and handlePlayer classes" />
     <MESSAGE value="add script shell" />
     <option name="LAST_COMMIT_MESSAGE" value="add script shell" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="19" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/PlayerHandler.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="playerName" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

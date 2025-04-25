@@ -1,4 +1,4 @@
-package Chat.TwoProcessIDs;
+package Chat.MultiProcessIDs;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -22,7 +22,7 @@ public class Server{
                 PlayerHandler playerHandler = new PlayerHandler(socket);
                 Thread thread = new Thread(playerHandler);
                 thread.start();
-                System.out.println("New Player is connected : " + playerHandler.playerName+ " with a process ID : "+ playerHandler.processID);
+                System.out.println("The Player : " + playerHandler.playerName+ " is connected " );
                 }
         } catch (IOException e) {
             closeServerSocket();

@@ -1,4 +1,4 @@
-package Chat.TwoProcessIDs;
+package Chat.MultiProcessIDs;
 
 import java.io.*;
 import java.net.Socket;
@@ -97,11 +97,6 @@ public class Player {
         }
     }
 
-    private static String getProcessID() {
-        String processName = java.lang.management.ManagementFactory.getRuntimeMXBean().getName();
-        return processName.split("@")[0];
-    }
-
     public static void main(String[] args) throws IOException{
          Scanner scanner = new Scanner(System.in);
          System.out.println("The following is a Chat program. ");
@@ -111,6 +106,7 @@ public class Player {
          String playerName = scanner.nextLine();
          Socket socket = new Socket("localhost",9090 );
          Player player = new Player(socket, playerName);
+         System.out.println("You have entered the Chat with the Process ID: "+ ProcessHandle.current().pid());
          player.receiveMessage();
          player.writeMessage();
 
