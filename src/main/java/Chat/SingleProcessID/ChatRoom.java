@@ -9,15 +9,30 @@ import java.util.concurrent.*;
 
 public class ChatRoom {
     //private final ConcurrentLinkedQueue<Player> players = new ConcurrentLinkedQueue<>();
-    private static ArrayList<Player> players= new ArrayList<>();
+    public static ArrayList<Player> players= new ArrayList<>();
 
+    /*public synchronized void addPlayer(Player player) {
+        players.add(player);
+    }*/
 
     public void addPlayer(Player player) {
         players.add(player);
     }
 
-    /*public synchronized void addPlayer(Player player) {
-        players.add(player);
+    public void broadcastMessage(String message, Player sender) throws IOException {
+        for (Player player : players) {
+            if (player != sender) {
+                player.displayMessage(message);
+            }
+        }
+    }
+
+    /*public synchronized void broadcastMessage(String message, Player sender) throws IOException {
+        for (Player player : players) {
+            if (player != sender) {
+                player.displayMessage(message);
+            }
+        }
     }*/
 
     public String getFirstPlayerName(){
@@ -33,20 +48,6 @@ public class ChatRoom {
         return false;
     }
 
-    public void broadcastMessage(String message, Player sender) throws IOException {
-        for (Player player : players) {
-            if (player != sender) {
-                player.displayMessage(message);
-            }
-        }
-    }
 
-    /**public synchronized void broadcastMessage(String message, Player sender) throws IOException {
-        for (Player player : players) {
-            if (player != sender) {
-                player.displayMessage(message);
-            }
-        }
-    }**/
 }
 

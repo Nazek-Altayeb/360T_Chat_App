@@ -5,8 +5,8 @@ import java.util.Scanner;
 import java.util.concurrent.*;
 
 public class Player {
-    private final BlockingQueue<String> inputQueue;   // For receiving messages
-    private final BlockingQueue<String> outputQueue; // For sending messages
+    private final BlockingQueue<String> inputQueue;
+    private final BlockingQueue<String> outputQueue;
     private final ChatRoom chatroom;
     public String name;
     private int numberOfSentMessages =1;
@@ -19,15 +19,14 @@ public class Player {
         this.name = name;
         chatroom.addPlayer(this);
     }
-
-
     public void sendMessage(String message) throws InterruptedException {
-        outputQueue.put(message);  // Add the message to the queue
+       outputQueue.put(message);  // Add the message to the queue
     }
 
 
     public String receiveMessage() throws InterruptedException {
-        return inputQueue.take();  // Take a message from the queue
+      return inputQueue.take();  // Take a message from the queue
+
     }
 
     public void displayMessage(String message) {
@@ -40,6 +39,7 @@ public class Player {
             try {
                 while (true) {
                     String receivedMessage = receiveMessage(); // Retrieve message from queue
+                    //String receivedMessage = messageQueue.take(); // Blocks if the queue is empty
                     if (receivedMessage != null) {
                         // deliver the message to the other player
                         chatroom.broadcastMessage(this.name + " received: " + receivedMessage, this);
@@ -49,6 +49,7 @@ public class Player {
             } catch (InterruptedException | IOException e) {
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
+                System.err.println("Reader thread interrupted");
             }
 
         }).start();
@@ -58,38 +59,40 @@ public class Player {
     // Start the thread that writes user input as messages
     public void startWriting() {
         new Thread(() -> {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-                while (true) {
-                    //System.out.print(name + ": ");
-                    String message = reader.readLine();  // Wait for user input
-                    if (message == null) {
-                        System.out.println("Received null message, skipping...");
-                        continue;  // Skip null input
-                    }
-
-                    // Trim spaces and check for empty message
-                    message = message.trim();
-                    if (message.isEmpty()) {
-                        System.out.println("Received empty message, skipping...");
-                        continue;  // Skip empty input
-                    }
-
-                    // Log the message before sending
-                    //System.out.println(this.name+": Writing message: \"" + message + "\"");
-
-                    boolean isFirstPlayer = chatroom.isFirstPlayer(this.name);
-                    if( isFirstPlayer == true){
-                        System.out.println(this.name+ " sent: \"" + message + "\". counter: " + numberOfSentMessages);  // Log after sending
-                        numberOfSentMessages++;
-                    }
-                    sendMessage(message);  // Add message to the queue
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            while (true) {
+                //System.out.print(name + ": ");
+                String message = reader.readLine();  // Wait for user input
+                if (message == null) {
+                    System.out.println("Received null message, skipping...");
+                    continue;  // Skip null input
                 }
 
-            } catch (IOException | InterruptedException e) {
-                e.printStackTrace();
-                Thread.currentThread().interrupt();
+                // Trim spaces and check for empty message
+                message = message.trim();
+                if (message.isEmpty()) {
+                    System.out.println("Received empty message, skipping...");
+                    continue;  // Skip empty input
+                }
+
+                // Log the message before sending
+                System.out.println(this.name+": Writing message: \"" + message + "\"");
+
+                boolean isFirstPlayer = chatroom.isFirstPlayer(this.name);
+                if( isFirstPlayer == true){
+                    System.out.println(this.name+ " sent: \"" + message + "\". counter: " + numberOfSentMessages);  // Log after sending
+                    numberOfSentMessages++;
+                }
+                sendMessage(message);  // Add message to the queue
             }
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            System.err.println("Reader thread interrupted");
+        }
         }).start();
+
     }
 
     public void closeQueues(BlockingQueue<String> inQueue,  BlockingQueue<String> outQueue) {
@@ -127,6 +130,7 @@ public class Player {
         BlockingQueue<String> inputQueue = new LinkedBlockingQueue<>();
         BlockingQueue<String> outputQueue = new LinkedBlockingQueue<>();
 
+
         long pid = ProcessHandle.current().pid();
         System.out.println("The Process ID for both players : " + pid);
 
@@ -138,16 +142,17 @@ public class Player {
 
         ChatRoom chatRoom = new ChatRoom();
 
-        Player firstPlayer = new Player(inputQueue, outputQueue,chatRoom, firstPlayerName);
+        Player firstPlayer = new Player(inputQueue,outputQueue,chatRoom, firstPlayerName);
         Player secondPlayer = new Player(outputQueue, inputQueue, chatRoom, secondPlayerName);
 
         System.out.println("In case you get an empty line while chatting, just press enter once again");
         System.out.print(firstPlayer.name + " you are the initiator, you may start : ");
 
-        firstPlayer.startReading();
         firstPlayer.startWriting();
+        firstPlayer.startReading();
 
         secondPlayer.startReading();
+
         secondPlayer.startWriting();
-    }
+ }
 }
