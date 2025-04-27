@@ -1,53 +1,132 @@
 package Chat.SingleProcessID;
-
 import java.io.*;
-import java.util.concurrent.*;
+import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.*;
 
-public class Player implements  Runnable{
+public class Player {
+    private final BlockingQueue<String> inputQueue;   // For receiving messages
+    private final BlockingQueue<String> outputQueue; // For sending messages
+    private final ChatRoom chatroom;
+    public String name;
+    private int numberOfSentMessages =1;
 
-    public final String name;
-    private final PlayerHandler playerHandler;
-    private final Scanner scanner;
-    BufferedReader bufferedReader ;
-    BufferedWriter bufferedWriter ;
-    private int numberOfSentMessages=1;
 
-    public Player(String name, PlayerHandler playerHandler) {
+    public Player(BlockingQueue<String> inputQueue, BlockingQueue<String> outputQueue, ChatRoom chatroom, String name) {
+        this.inputQueue = inputQueue;
+        this.outputQueue = outputQueue;
+        this.chatroom = chatroom;
         this.name = name;
-        this.playerHandler = playerHandler;
-        this.scanner = new Scanner(System.in);
-        this.bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        this.bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-        playerHandler.addPlayer(this);
+        chatroom.addPlayer(this);
     }
 
-    @Override
-    public void run() {
-        try {
-            while (true) {
-                System.out.print(name + ": ");
-                String message = bufferedReader.readLine();
-                playerHandler.broadcastMessage(name + " received: " + message, this);
-                if ("exit".equalsIgnoreCase(message)) {
-                    System.out.println(name + " has left the chat.");
-                    break;
-                }
 
+    public void sendMessage(String message) throws InterruptedException {
+        outputQueue.put(message);  // Add the message to the queue
+    }
+
+
+    public String receiveMessage() throws InterruptedException {
+        return inputQueue.take();  // Take a message from the queue
+    }
+
+    public void displayMessage(String message) {
+        System.out.println(message);
+    }
+
+    // Start the thread that reads incoming messages
+    public void startReading() {
+        new Thread(() -> {
+            try {
+                while (true) {
+                    String receivedMessage = receiveMessage(); // Retrieve message from queue
+                    if (receivedMessage != null) {
+                        // deliver the message to the other player
+                        chatroom.broadcastMessage(this.name + " received: " + receivedMessage, this);
+                        System.out.print(name + ": ");
+                    }
+                }
+            } catch (InterruptedException | IOException e) {
+                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
 
-        } catch (Exception e) {
+        }).start();
+    }
+
+
+    // Start the thread that writes user input as messages
+    public void startWriting() {
+        new Thread(() -> {
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+                while (true) {
+                    //System.out.print(name + ": ");
+                    String message = reader.readLine();  // Wait for user input
+                    if (message == null) {
+                        System.out.println("Received null message, skipping...");
+                        continue;  // Skip null input
+                    }
+
+                    // Trim spaces and check for empty message
+                    message = message.trim();
+                    if (message.isEmpty()) {
+                        System.out.println("Received empty message, skipping...");
+                        continue;  // Skip empty input
+                    }
+
+                    // Log the message before sending
+                    //System.out.println(this.name+": Writing message: \"" + message + "\"");
+
+                    boolean isFirstPlayer = chatroom.isFirstPlayer(this.name);
+                    if( isFirstPlayer == true){
+                        System.out.println(this.name+ " sent: \"" + message + "\". counter: " + numberOfSentMessages);  // Log after sending
+                        numberOfSentMessages++;
+                    }
+                    sendMessage(message);  // Add message to the queue
+                }
+
+            } catch (IOException | InterruptedException e) {
+                e.printStackTrace();
+                Thread.currentThread().interrupt();
+            }
+        }).start();
+    }
+
+    public void closeQueues(BlockingQueue<String> inQueue,  BlockingQueue<String> outQueue) {
+        if (!inQueue.isEmpty()) {
+            inQueue.clear();
+        }
+        if (!outQueue.isEmpty()) {
+            outQueue.clear();
+        }
+    }
+
+
+
+    public void closeBufferAndQueues(BufferedReader bufferedReader, BlockingQueue<String> inQueue,  BlockingQueue<String> outQueue) {
+        try {
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+            if (!inQueue.isEmpty()) {
+                inQueue.clear();
+            }
+            if (!outQueue.isEmpty()) {
+                outQueue.clear();
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void receiveMessage(String message) {
-         System.out.println(message);
-    }
 
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        BlockingQueue<String> inputQueue = new LinkedBlockingQueue<>();
+        BlockingQueue<String> outputQueue = new LinkedBlockingQueue<>();
+
         long pid = ProcessHandle.current().pid();
         System.out.println("The Process ID for both players : " + pid);
 
@@ -57,24 +136,18 @@ public class Player implements  Runnable{
         System.out.print("Enter the name of the second player :");
         String secondPlayerName = scanner.nextLine();
 
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ChatRoom chatRoom = new ChatRoom();
 
-        // Create Chat
-        PlayerHandler playerHandler = new PlayerHandler();
+        Player firstPlayer = new Player(inputQueue, outputQueue,chatRoom, firstPlayerName);
+        Player secondPlayer = new Player(outputQueue, inputQueue, chatRoom, secondPlayerName);
 
-        // Create and start threads for each player
-        Thread firstPlayer = new Thread(new Player(firstPlayerName, playerHandler));
-        Thread secondPlayer = new Thread(new Player(secondPlayerName, playerHandler));
+        System.out.println("In case you get an empty line while chatting, just press enter once again");
+        System.out.print(firstPlayer.name + " you are the initiator, you may start : ");
 
-        // start Chat
-        /*if (!firstPlayer.isAlive()) {
-            firstPlayer.start();
-        }
-        if (!secondPlayer.isAlive()) {
-            secondPlayer.start();
-        }*/
+        firstPlayer.startReading();
+        firstPlayer.startWriting();
 
-        executor.submit(firstPlayer);
-        executor.submit(secondPlayer);
+        secondPlayer.startReading();
+        secondPlayer.startWriting();
     }
 }

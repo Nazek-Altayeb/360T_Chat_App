@@ -27,7 +27,6 @@ public class PlayerHandler extends Thread{
             InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
             this.bufferedReader = new BufferedReader(inputStreamReader);
             this.playerName = bufferedReader.readLine();
-            this.processID = ProcessHandle.current().pid();
             playerHandlers.add(this);
             sendNotification("The Player: " + playerName+ " is online...", playerName);
             sendNotification("The Player: " + playerHandlers.getFirst().playerName+ " is online..." , playerHandlers.getFirst().playerName);
