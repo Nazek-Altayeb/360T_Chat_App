@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add script shell">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/ChatRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/ChatRoom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java" afterDir="false" />
@@ -215,6 +216,10 @@
           <properties class="java.util.NoSuchElementException" package="java.util" />
           <option name="timeStamp" value="50" />
         </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.IOException" package="java.io" />
+          <option name="timeStamp" value="59" />
+        </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/draft/Player.java</url>
           <line>20</line>
@@ -222,12 +227,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java</url>
-          <line>85</line>
+          <line>93</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.java</url>
-          <line>126</line>
+          <line>130</line>
           <properties class="Chat.SingleProcessID.Player" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

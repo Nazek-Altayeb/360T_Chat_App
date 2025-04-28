@@ -38,8 +38,11 @@ public class Player {
         new Thread(() -> {
             try {
                 while (true) {
+                    if(numberOfSentMessages == 10){
+                        closeQueues(inputQueue,outputQueue);
+                        break;
+                    }
                     String receivedMessage = receiveMessage(); // Retrieve message from queue
-                    //String receivedMessage = messageQueue.take(); // Blocks if the queue is empty
                     if (receivedMessage != null) {
                         // deliver the message to the other player
                         chatroom.broadcastMessage(this.name + " received: " + receivedMessage, this);
@@ -47,14 +50,13 @@ public class Player {
                     }
                 }
             } catch (InterruptedException | IOException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
                 Thread.currentThread().interrupt();
                 System.err.println("Reader thread interrupted");
             }
 
         }).start();
     }
-
 
     // Start the thread that writes user input as messages
     public void startWriting() {
@@ -81,15 +83,21 @@ public class Player {
                 boolean isFirstPlayer = chatroom.isFirstPlayer(this.name);
                 if( isFirstPlayer == true){
                     System.out.println(this.name+ " sent: \"" + message + "\". counter: " + numberOfSentMessages);  // Log after sending
+                    if(numberOfSentMessages == 10){
+                        System.out.println("The initiator has sent 10 messages and received 10 replies, Chat is terminated");
+                        closeBufferAndQueues(reader,inputQueue,outputQueue);
+
+                        break;
+                    }
                     numberOfSentMessages++;
                 }
                 sendMessage(message);  // Add message to the queue
             }
 
         } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+           // e.printStackTrace();
+            closeQueues(inputQueue,outputQueue);
             Thread.currentThread().interrupt();
-            System.err.println("Reader thread interrupted");
         }
         }).start();
 
@@ -103,8 +111,6 @@ public class Player {
             outQueue.clear();
         }
     }
-
-
 
     public void closeBufferAndQueues(BufferedReader bufferedReader, BlockingQueue<String> inQueue,  BlockingQueue<String> outQueue) {
         try {
@@ -121,8 +127,6 @@ public class Player {
             e.printStackTrace();
         }
     }
-
-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
