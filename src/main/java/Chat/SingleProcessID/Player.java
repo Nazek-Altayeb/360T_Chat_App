@@ -1,9 +1,13 @@
 package Chat.SingleProcessID;
 import java.io.*;
-import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
+/*
+* A class represent the player
+* A player can read/write msg to/from queues
+* the number of sent messages is considered only for the first instance of this class
+* */
 public class Player {
     private final BlockingQueue<String> inputQueue;
     private final BlockingQueue<String> outputQueue;
@@ -11,7 +15,7 @@ public class Player {
     public String name;
     private int numberOfSentMessages =1;
 
-
+    // Create a Player instance, and add it to the chat room.
     public Player(BlockingQueue<String> inputQueue, BlockingQueue<String> outputQueue, ChatRoom chatroom, String name) {
         this.inputQueue = inputQueue;
         this.outputQueue = outputQueue;
@@ -19,16 +23,19 @@ public class Player {
         this.name = name;
         chatroom.addPlayer(this);
     }
+
+    // Add the message to the queue
     public void sendMessage(String message) throws InterruptedException {
-       outputQueue.put(message);  // Add the message to the queue
+       outputQueue.put(message);
     }
 
-
+    // Take a message from the queue
     public String receiveMessage() throws InterruptedException {
-      return inputQueue.take();  // Take a message from the queue
+      return inputQueue.take();
 
     }
 
+    // invoked by broadcastMessage in ChatRoom class.
     public void displayMessage(String message) {
         System.out.println(message);
     }
@@ -44,13 +51,11 @@ public class Player {
                     }
                     String receivedMessage = receiveMessage(); // Retrieve message from queue
                     if (receivedMessage != null) {
-                        // deliver the message to the other player
                         chatroom.broadcastMessage(this.name + " received: " + receivedMessage, this);
                         System.out.print(name + ": ");
                     }
                 }
             } catch (InterruptedException | IOException e) {
-                //e.printStackTrace();
                 Thread.currentThread().interrupt();
                 System.err.println("Reader thread interrupted");
             }
@@ -63,7 +68,6 @@ public class Player {
         new Thread(() -> {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             while (true) {
-                //System.out.print(name + ": ");
                 String message = reader.readLine();  // Wait for user input
                 if (message == null) {
                     System.out.println("Received null message, skipping...");
@@ -95,7 +99,6 @@ public class Player {
             }
 
         } catch (IOException | InterruptedException e) {
-           // e.printStackTrace();
             closeQueues(inputQueue,outputQueue);
             Thread.currentThread().interrupt();
         }
@@ -127,7 +130,11 @@ public class Player {
             e.printStackTrace();
         }
     }
-
+/*
+* once program starts, type the names of the two players.
+* The two players can exchange messages in the same console, one after another.
+* Chat will be terminated after the first player sends and receives ten messages
+* */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
