@@ -1,4 +1,4 @@
-# The Challenge description (as received from 360 Treasury Systems)
+# The Challenge description:
 
 Having a Player class - an instance of this class with that can communicate with other Player(s) (other instances of this class)
 
