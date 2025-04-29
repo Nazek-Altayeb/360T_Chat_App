@@ -5,37 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8cade856-9b92-45ab-842a-81cd92544c6f" name="Changes" comment="add script shell">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/adwaita_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/auxlib_native0.5_3-0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/cairo_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/clib_native0.5_3-0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gdkpixbuf_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gio_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/glib_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gobject_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/graphene_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/gtk4_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/harfbuzz_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javalib_native0.5_3-0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/nativelib_native0.5_3-0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/pango_native0.5_3-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/posixlib_native0.5_3-0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scala-library-2.13.14.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scala3-library_3-3.3.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scala3lib_native0.5_3-3.3.4+0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/scalalib_native0.5_2.13-2.13.15+0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/windowslib_native0.5_3-0.5.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/Player$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/PlayerHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/MultiProcessIDs/Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/ChatRoom.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Chat/SingleProcessID/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,36 +43,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Chat.MultiProcessIDs.Player.executor": "Run",
-    "Application.Chat.MultiProcessIDs.Server.executor": "Run",
-    "Application.Chat.OneProcess.Player.executor": "Run",
-    "Application.Chat.OneProcess.Server.executor": "Run",
-    "Application.Chat.SingleProcessID.Player.executor": "Run",
-    "Application.ChatApp.executor": "Run",
-    "Application.Client.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Player.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Shell Script.run.sh (1).executor": "Run",
-    "Shell Script.run.sh.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nalma/IdeaProjects/360T_Chat_App",
-    "onboarding.tips.debug.path": "C:/Users/nalma/IdeaProjects/360T_Chat_App/src/main/java/org/example/Main.java",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Chat.MultiProcessIDs.Player.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chat.MultiProcessIDs.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chat.OneProcess.Player.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chat.OneProcess.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Chat.SingleProcessID.Player.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ChatApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Client.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Player.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Shell Script.run.sh (1).executor&quot;: &quot;Run&quot;,
+    &quot;Shell Script.run.sh.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nalma/IdeaProjects/360T_Chat_App&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/nalma/IdeaProjects/360T_Chat_App/src/main/java/org/example/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nalma\IdeaProjects\360T_Chat_App\src\main\java\Chat\draft" />
